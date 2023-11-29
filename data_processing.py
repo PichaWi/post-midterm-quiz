@@ -43,6 +43,9 @@ class Table:
         '''
         This method inserts a dictionary, dict, into a Table object, effectively adding a row to the Table.
         '''
+        inserted_table = Table(self.table_name + '_insert_', [])
+        self.table_name.append(dict)
+        return inserted_table
 
     def update_row(self, primary_attribute, primary_attribute_value, update_attribute, update_value):
         '''
@@ -50,6 +53,7 @@ class Table:
         For example, my_table.update_row('Film', 'A Serious Man', 'Year', '2022') will change the 'Year' attribute for the 'Film'
         'A Serious Man' from 2009 to 2022
         '''
+        updated_table = Table(self.table_name + '_update_', [])
 
     def filter(self, condition):
         filtered_table = Table(self.table_name + '_filtered', [])
@@ -118,6 +122,16 @@ class Table:
     def __str__(self):
         return self.table_name + ':' + str(self.table)
 
+
+dict = {}
+dict['Film'] = 'The Shape of Water'
+dict['Genre'] = 'Fantasy'
+dict['Lead Studio'] = 'Fox'
+dict['Audience score %'] = '72'
+dict['Profitability'] = '9.765'
+dict['Rotten Tomatoes %'] = '92'
+dict['Worldwide Gross'] = '195.3'
+dict['Year'] = '2017'
 
 table1 = Table('movies', movies)
 my_DB = DB()
